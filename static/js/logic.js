@@ -21,14 +21,14 @@ function createMap(EarthquakesLayer) {
         layers: [streetmap, EarthquakesLayer]
     });
 
-    // Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
+    // Create a layer control
     L.control.layers(baseMaps, overlayMaps, {
         collapsed: false
     }).addTo(map);
 }
 
 function markersSize(magnitude) {
-    // determine the radius of the marker based on earthquake magnitude.
+    // the radius of the marker based on earthquake magnitude.
     return magnitude * 10; 
 }
 
@@ -36,7 +36,7 @@ function createMarkers(response) {
   
     let earthquakes = response.features;
 
-    // Initialize an array to hold earthquake markers.
+    // Initialize an array 
     let EarthquakeMarkers = [];
 
     // Loop through the earthquake array.
@@ -61,5 +61,5 @@ function createMarkers(response) {
     createMap(L.layerGroup(EarthquakeMarkers));
 }
 
-// Perform an API call to the USGS Earthquake API t
+// Perform an API call to the USGS 
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(createMarkers);
